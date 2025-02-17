@@ -1,6 +1,6 @@
 import React from "react";
 
-function FirstYear() {
+function fy() {
   return (
     <div style={{ color: "white", textAlign: "center", padding: "20px" }}>
       <h2>First Year Question Papers</h2>
@@ -9,4 +9,4 @@ function FirstYear() {
   );
 }
 
-export default FirstYear;
+export default fy;

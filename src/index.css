@@ -13,7 +13,6 @@ html, body {
   overflow-y: auto; /* Ensure vertical scrolling */
 }
 
-
 body {
   display: flex;
   flex-direction: column; /* Keep layout organized */

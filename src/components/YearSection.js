@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./YearSection.css";
 
 function YearSection() {
-  const navigate = useNavigate(); // ✅ Now it's inside <Router>
+  const navigate = useNavigate();
 
   return (
     <div className="year-section-container">
