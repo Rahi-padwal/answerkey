@@ -1,0 +1,69 @@
+
+
+/* Container Styling */
+.year-section-container {
+  display: flex;
+  justify-content: center; /* Center the boxes horizontally */
+  align-items: center; /* Vertically align the content */
+  gap: 40px; /* Space between the boxes */
+  flex-wrap: wrap; /* Allow boxes to wrap for responsiveness */
+  max-width: 1200px; /* Limit the width */
+  margin: 0 auto; /* Center the container */
+  background-color: #000000; /* Ensure consistent background */
+}
+
+/* Individual Box Styling */
+.year-section {
+  background-color: #1c1c1c; /* Dark gray background for boxes */
+  width: 300px; /* Set box width */
+  height: 250px; /* Adjust box height */
+  border-radius: 10px; /* Rounded corners for boxes */
+  display: flex;
+  justify-content: center; /* Center text horizontally */
+  align-items: center; /* Center text vertically */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.year-section:hover {
+  transform: scale(1.05); /* Slightly enlarge the box on hover */
+}
+
+/* Box Text Styling */
+.year-section h3 {
+  color: #ffffff; /* Ensure text is visible */
+  font-size: 18px; /* Font size for box text */
+}
+
+/* Heading Styling */
+#question-papers h2 {
+  color: #ffffff; /* White text color */
+  font-size: 32px; /* Adjust font size for visibility */
+  margin: 0 0 20px 0; /* Add spacing below the heading */
+  padding: 0; /* Ensure no extra padding is added */
+  position: relative; /* Position the heading correctly */
+  z-index: 2; /* Bring heading to the front */
+}
+
+/* Title Styling */
+.section-title {
+  font-size: 28px; /* Adjust the font size */
+  font-weight: bold; /* Make it bold */
+  color: white; /* Ensure the text is visible */
+  text-align: center; /* Center the title */
+  margin: 0 0 10px 0; /* Minimal space below the title */
+  padding: 0; /* Ensure no padding */
+}
+
+/* Container Styling */
+.year-section-container {
+  display: flex;
+  flex-direction: column; /* Stack the title and boxes vertically */
+  align-items: center; /* Center-align the content */
+  gap: 20px; /* Space between the title and the boxes */
+  margin: 0 auto; /* Center the container */
+  padding: 0; /* Remove extra padding */
+}
+html {
+  scroll-behavior: smooth;
+}

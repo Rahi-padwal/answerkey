@@ -1,0 +1,106 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+/* General Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: black !important; /* Black background */
+
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* Align LHS and RHS */
+  align-items: center; /* Vertically center the items */
+  padding: 10px 20px;
+  background-color: black; /* Black background */
+  color: white; /* White text */
+  position: sticky; /* Stick to the top */
+  top: 0;
+  z-index: 1000;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.navbar-left h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.navbar-right ul {
+  list-style: none; /* Remove bullets */
+  display: flex; /* Align menu items horizontally */
+  gap: 20px; /* Space between menu items */
+  margin: 0;
+  padding: 0; 
+}
+
+.navbar-right li {
+  display: inline;
+}
+
+.navbar-right a {
+  text-decoration: none; /* Remove underline */
+  color: white; /* White text */
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.navbar-right a:hover {
+  color: #ccc; /* Light gray on hover */
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth; /* Enables smooth scrolling */
+}
+
+/* Section Spacing */
+section {
+min-height: 100vh; /* Make each section fill the viewport height */
+}
+
+/* Styling for Home Section */
+#home {
+  background-color: black; /* Match the design */
+  color: white;
+  text-align: center;
+}
+
+/* Styling for Question Papers Section */
+#question-papers {
+    background-color: #000000 !important; /* Force black background */
+    color: white; /* Ensure text is visible */
+    text-align: center;
+}
+
+/* Styling for About Me Section */
+#about-me {
+  background-color: white; /* White background */
+  color: black;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black; /* Set the background color for the whole site */
+  color: white; /* Set the default text color */
+}
+
+section {
+  margin: 0;
+  padding: 0;
+  background-color: black; /* Set black background for all sections */
+}
+
+.navbar {
+  margin: 0;
+  padding: 10px 20px;
+  background-color: black; /* Ensure navbar is black */
+}
+
+h2, p {
+  margin: 0; /* Remove unnecessary margins */
+}
