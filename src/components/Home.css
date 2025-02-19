@@ -1,28 +1,27 @@
 .home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 80vh; /* Full viewport height */
-    background-color: black; /* Black background */
-    color: white; /* White text */
-    text-align: center; /* Center-align text */
-    margin: 0; /* Remove any default margins */
-  }
-  
-  .subtitle {
-    font-size: 1.2rem; /* Smaller font for headline */
-    letter-spacing: 2px;
-    text-transform: uppercase; /* Make it uppercase for a modern look */
-    margin-bottom: 20px;
-    color: #ccc; /* Light gray for contrast */
-  }
-  
-  .main-title {
-    font-size: 4rem; /* Large font size for the title */
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin: 0; /* Remove any default margins */
-  }
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; /* Full viewport height */
+  background-color: black; /* Black background */
+  color: white; /* White text */
+  text-align: center; /* Center-align text */
+  margin: 0; /* Remove any default margins */
+}
+
+.subtitle {
+  font-size: 1.2rem; /* Smaller font for headline */
+  letter-spacing: 2px;
+  text-transform: uppercase; /* Make it uppercase for a modern look */
+  margin-bottom: 20px;
+  color: #ccc; /* Light gray for contrast */
+}
+
+.main-title {
+  font-size: 4rem; /* Large font size for the title */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  margin: 0; /* Remove any default margins */
+}
