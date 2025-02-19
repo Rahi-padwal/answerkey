@@ -1,30 +1,26 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./login.css"; 
 
-const LoginModal = ({ isOpen, onClose }) => {
+const LoginModal = ({ isOpen, onLogin, onClose }) => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
 
-  if (!isOpen) return null;
+  if (!isOpen) return null; // Don't render if modal is closed
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); 
-
-    // Validate Email Domain, only cumminscollege.in are allowed.
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!email.endsWith("@cumminscollege.in")) {
-      setError("Only @cumminscollege.in emails are allowed.");
-      return; // Stop further execution
+      setError("Only Cummins college students are allowed.");
+      return;
     }
-
-    setError(""); // Clear error if validation passes
-    alert("Login successful!"); // You can replace this with actual login logic
+    onLogin(); // ✅ Calls login function in App.js
   };
 
   return (
     <div className="login-modal">
       <div className="login-box">
         <span className="close-btn" onClick={onClose}>&times;</span>
-        <h2>Log in</h2>
+        <h2>Register</h2>
         
         <form onSubmit={handleSubmit}>
           <p>Email: 
@@ -40,12 +36,8 @@ const LoginModal = ({ isOpen, onClose }) => {
           {/*Display error message if validation fails */}
           {error && <p className="error-message">{error}</p>}
           
-          <button type="submit" className="login-submit">Login</button>
+          <button type="submit" className="login-submit">Register</button>
         </form>
-
-        <button className="signup-btn" onClick={(e) => e.preventDefault()}>
-          Sign up
-        </button>
       </div>
     </div>
   );
