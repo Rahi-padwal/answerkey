@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Home from "./components/Home";
 import QuestionPapers from "./components/QuestionPapers";
 import AboutMe from "./components/AboutMe";
+import LoginModal from "./components/login"; // Import LoginModal
 import "./App.css";
 
 function App() {
+  const [isLoginOpen, setLoginOpen] = useState(false);
+
+  useEffect(() => {
+    // Auto-show login modal after 5 seconds
+    const timer = setTimeout(() => {
+      setLoginOpen(true);
+    }, 7000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div>
       {/* Navigation Bar */}
@@ -25,9 +37,15 @@ function App() {
             <li>
               <a href="#about-me" onClick={(e) => smoothScroll(e, "about-me")}>About Me</a>
             </li>
+            <li>
+              <a href="login" onClick={() => setLoginOpen(true)}>Login</a>
+            </li>
           </ul>
         </div>
       </nav>
+
+      {/* Login Modal */}
+      <LoginModal isOpen={isLoginOpen} onClose={() => setLoginOpen(false)} />
 
       {/* Page Sections */}
       <section id="home">

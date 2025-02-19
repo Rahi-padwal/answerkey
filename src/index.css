@@ -26,7 +26,7 @@ section {
   min-height: 100vh; /* Ensure sections span full viewport height */
 }
 
-#home, #question-papers, #about-me {
+#home, #question-papers, #about-me, #login {
   background-color: #000000 !important; /* Force black for specific sections */
   text-align: center;
 }
