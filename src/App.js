@@ -1,87 +1,105 @@
 import React, { useState, useEffect } from "react";
+import { Routes, Route, Link, useLocation } from "react-router-dom"; // ✅ Import useLocation
 import Home from "./components/Home";
 import QuestionPapers from "./components/QuestionPapers";
+import FirstYear from "./components/fy";
+import SecondYear from "./components/sy";
 import AboutMe from "./components/AboutMe";
-import LoginModal from "./components/login"; // ✅ Import LoginModal
+import LoginModal from "./components/login";
 import "./App.css";
 
 function App() {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showWebsite, setShowWebsite] = useState(true); // ✅ Show website for first 5 sec
+  const [showWebsite, setShowWebsite] = useState(true);
+
+  const location = useLocation(); // ✅ Get current page location
 
   useEffect(() => {
-    // ✅ Show website for 5 seconds before showing login modal
     const timer = setTimeout(() => {
-      setShowWebsite(false); // Hide website
-      setLoginOpen(true); // Show login modal
-    }, 5000); // **5 seconds delay**
+      setShowWebsite(false);
+      setLoginOpen(true);
+    }, 5000);
 
-    return () => clearTimeout(timer); // Cleanup function
+    return () => clearTimeout(timer);
   }, []);
 
-  // ✅ Handle successful login
   const handleLogin = () => {
     setIsLoggedIn(true);
-    setLoginOpen(false); // ✅ Close login modal
-    setShowWebsite(true); // ✅ Show website after login
+    setLoginOpen(false);
+    setShowWebsite(true);
+  };
+
+  // ✅ Smooth Scroll Function (Brings back scrolling)
+  const smoothScroll = (event, targetId) => {
+    event.preventDefault();
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
     <div>
-      {/* ✅ Show login modal after 5 seconds */}
       {isLoginOpen && !isLoggedIn && (
         <LoginModal isOpen={isLoginOpen} onLogin={handleLogin} />
       )}
 
-      {/* ✅ Show website for first 5 seconds or after login */}
       {showWebsite || isLoggedIn ? (
         <>
-          {/* Navigation Bar */}
+          {/* ✅ Navigation Bar */}
           <nav className="navbar">
             <div className="navbar-left">
               <h1>Answer Key</h1>
             </div>
             <div className="navbar-right">
               <ul>
-                <li>
-                  <a href="#home" onClick={(e) => smoothScroll(e, "home")}>Home</a>
-                </li>
-                <li>
-                  <a href="#question-papers" onClick={(e) => smoothScroll(e, "question-papers")}>
-                    Question Papers
-                  </a>
-                </li>
-                <li>
-                  <a href="#about-me" onClick={(e) => smoothScroll(e, "about-me")}>About Me</a>
-                </li>
+                {/* ✅ If on Home Page → Use Smooth Scrolling, Else → Use Routing */}
+                {location.pathname === "/" ? (
+                  <>
+                    <li><a href="#home" onClick={(e) => smoothScroll(e, "home")}>Home</a></li>
+                    <li><a href="#question-papers" onClick={(e) => smoothScroll(e, "question-papers")}>Question Papers</a></li>
+                    <li><a href="#about-me" onClick={(e) => smoothScroll(e, "about-me")}>About Me</a></li>
+                  </>
+                ) : (
+                  <>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/question-papers">Question Papers</Link></li>
+                    <li><Link to="/about-me">About Me</Link></li>
+                  </>
+                )}
               </ul>
             </div>
           </nav>
 
-          {/* Page Sections */}
-          <section id="home">
-            <Home />
-          </section>
-          <section id="question-papers">
-            <QuestionPapers />
-          </section>
-          <section id="about-me">
-            <AboutMe />
-          </section>
+          {/* ✅ Handle Smooth Scrolling Sections */}
+          {location.pathname === "/" && (
+            <>
+              <section id="home">
+                <Home />
+              </section>
+              <section id="question-papers">
+                <QuestionPapers />
+              </section>
+              <section id="about-me">
+                <AboutMe />
+              </section>
+            </>
+          )}
+
+          {/* ✅ Define Routes for Separate Pages */}
+          <Routes>
+            <Route path="/question-papers" element={<QuestionPapers />} />
+            <Route path="/first-year" element={<FirstYear />} />
+            <Route path="/second-year" element={<SecondYear />} />
+            <Route path="/about-me" element={<AboutMe />} />
+            <Route path="*" element={<h2>Page Not Found</h2>} />
+            <Route path="*" element={<h2 style={{ color: "white", textAlign: "center" }}>404 - Page Not Found</h2>} />
+          </Routes>
         </>
       ) : null}
     </div>
   );
 }
-
-// ✅ Smooth Scrolling Function
-const smoothScroll = (event, targetId) => {
-  event.preventDefault();
-  const section = document.getElementById(targetId);
-  if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
-  }
-};
 
 export default App;

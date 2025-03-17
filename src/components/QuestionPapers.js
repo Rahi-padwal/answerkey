@@ -8,20 +8,20 @@ function QuestionPapers() {
   return (
     <section className="question-papers-section">
       {/* ✅ Added Heading */}
-      <h2 className="qp-heading">Previous Year Question Papers</h2>
+      <h2 className="qp-heading">PREVIOUS YEAR QUESTION PAPERS</h2>
 
       <div className="qp-cards-container">
         <div className="qp-card" onClick={() => navigate("/first-year")}>
           <div className="qp-content">
             <h3>First Year</h3>
-            <p>Explore previous year papers for the first year.</p>
+            <p>Mention the subjects of first year</p>
           </div>
         </div>
 
         <div className="qp-card" onClick={() => navigate("/second-year")}>
           <div className="qp-content">
             <h3>Second Year</h3>
-            <p>Access organized question papers for the second year.</p>
+            <p>Mention the subjects of second year.</p>
           </div>
         </div>
       </div>

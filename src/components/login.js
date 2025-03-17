@@ -1,31 +1,58 @@
 import React, { useState } from "react";
-import "./login.css"; 
+import "./login.css";
 
 const LoginModal = ({ isOpen, onLogin }) => {
-  const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
 
-  if (!isOpen) return null; // Don't render if modal is closed
+    if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!email.endsWith("@cumminscollege.in")) {
-      alert("Only @cumminscollege.in emails are allowed.");
-      return;
-    }
-    onLogin(); // ✅ Calls login function in App.js
-  };
+    const handleSubmit = async (e) => { // Make handleSubmit async
+        e.preventDefault();
+        if (!email.endsWith("@cumminscollege.in")) {
+            alert("Only @cumminscollege.in emails are allowed.");
+            return;
+        }
 
-  return (
-    <div className="login-modal">
-      <div className="login-box">
-        <h2>Log in</h2>
-        <form onSubmit={handleSubmit}>
-          <p>Email: <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></p>
-          <button type="submit" className="login-submit">Login</button>
-        </form>
-      </div>
-    </div>
-  );
+        try {
+            const response = await fetch('http://localhost:5000/register', { // Replace with your backend URL if different
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email }), // Send name and email in the request body
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log('Registration successful:', data);
+                onLogin(); // Call the login function in App.js upon successful registration
+                // Optionally, you can reset the form here:
+                setName("");
+                setEmail("");
+            } else {
+                const errorData = await response.json();
+                console.error('Registration failed:', errorData);
+                alert(`Registration failed: ${errorData.message || 'Something went wrong'}`);
+            }
+        } catch (error) {
+            console.error('Error sending data to server:', error);
+            alert('Failed to connect to the server.');
+        }
+    };
+
+    return (
+        <div className="login-modal">
+            <div className="login-box">
+                <h2>Log in</h2> {/* Consider changing this to "Register" if you are storing new users */}
+                <form onSubmit={handleSubmit}>
+                    <p>Name: <input type="text" value={name} onChange={(e) => setName(e.target.value)} required /></p>
+                    <p>Email: <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></p>
+                    <button type="submit" className="login-submit">Register</button> {/* Change button text to "Register" */}
+                </form>
+            </div>
+        </div>
+    );
 };
 
 export default LoginModal;

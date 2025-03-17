@@ -100,7 +100,7 @@ html {
 
 .qp-heading {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
   color: white;
   margin-bottom: 20px;
@@ -108,12 +108,13 @@ html {
 
 /* Content inside the card */
 .qp-content h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  margin-top: 10px;
 }
 
 .qp-content p {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: #ccc;
 }
 
