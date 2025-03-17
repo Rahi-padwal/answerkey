@@ -67,3 +67,64 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Container for question paper cards */
+.qp-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.qp-card {
+  width: 600px;  /* ✅ Increased width */
+  height: 500px; /* ✅ Increased height */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover effect */
+.qp-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgb(18, 168, 156);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.qp-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Content inside the card */
+.qp-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.qp-content p {
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+/* Make it responsive */
+@media (max-width: 900px) {
+  .qp-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.question-papers-section {
+  padding-top: 100px; /* ✅ Pushes content down to avoid overlap */
+}
