@@ -8,33 +8,34 @@ import "./App.css";
 function App() {
   const [isLoginOpen, setLoginOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showWebsite, setShowWebsite] = useState(true); // ✅ Show website for first 5 sec
 
-  // ✅ Auto-show login modal after 7 seconds (only if not logged in)
   useEffect(() => {
+    // ✅ Show website for 5 seconds before showing login modal
     const timer = setTimeout(() => {
-      if (!isLoggedIn) {
-        setLoginOpen(true);
-      }
-    }, 1000);  // **7 seconds timer**
+      setShowWebsite(false); // Hide website
+      setLoginOpen(true); // Show login modal
+    }, 5000); // **5 seconds delay**
 
     return () => clearTimeout(timer); // Cleanup function
-  }, [isLoggedIn]); // ✅ Runs only if `isLoggedIn` changes
+  }, []);
 
   // ✅ Handle successful login
   const handleLogin = () => {
     setIsLoggedIn(true);
-    setLoginOpen(false);  // ✅ Close login modal
+    setLoginOpen(false); // ✅ Close login modal
+    setShowWebsite(true); // ✅ Show website after login
   };
 
   return (
     <div>
-      {/* ✅ Show Login Modal if user is not logged in */}
+      {/* ✅ Show login modal after 5 seconds */}
       {isLoginOpen && !isLoggedIn && (
-        <LoginModal isOpen={isLoginOpen} onLogin={handleLogin} onClose={() => setLoginOpen(false)} />
+        <LoginModal isOpen={isLoginOpen} onLogin={handleLogin} />
       )}
 
-      {/* ✅ Show Website only if logged in */}
-      {!isLoginOpen && isLoggedIn && (
+      {/* ✅ Show website for first 5 seconds or after login */}
+      {showWebsite || isLoggedIn ? (
         <>
           {/* Navigation Bar */}
           <nav className="navbar">
@@ -69,7 +70,7 @@ function App() {
             <AboutMe />
           </section>
         </>
-      )}
+      ) : null}
     </div>
   );
 }

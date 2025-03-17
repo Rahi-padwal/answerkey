@@ -81,11 +81,6 @@ min-height: 100vh; /* Make each section fill the viewport height */
   color: black;
   text-align: center;
 }
-#login {
-  background-color: white; /* White background */
-  color: black;
-  text-align: center;
-}
 
 body {
   margin: 0;
