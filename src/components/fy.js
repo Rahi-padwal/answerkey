@@ -1,20 +1,19 @@
 import React from "react";
 import "./fy.css"; // ✅ Add CSS if needed
 
-function fy() {
+function Fy() {
   return (
     <div className="first-year-container">
       <h2>First Year Question Papers</h2>
-      <p>Here you can find all the previous year question papers for the first year.</p>
 
-      {/* Example: List of question papers */}
+      {/* List of question papers with Google Drive links */}
       <ul className="question-list">
-        <li><a href="/papers/first-year-subject1.pdf" download>Subject 1 - 2023</a></li>
-        <li><a href="/papers/first-year-subject2.pdf" download>Subject 2 - 2022</a></li>
-        <li><a href="/papers/first-year-subject3.pdf" download>Subject 3 - 2021</a></li>
+        <li><a href="https://drive.google.com/file/d/your_file_id_1/view" target="_blank" rel="noopener noreferrer">Subject 1 - 2023</a></li>
+        <li><a href="https://drive.google.com/file/d/your_file_id_2/view" target="_blank" rel="noopener noreferrer">Subject 2 - 2022</a></li>
+        <li><a href="https://drive.google.com/file/d/your_file_id_3/view" target="_blank" rel="noopener noreferrer">Subject 3 - 2021</a></li>
       </ul>
     </div>
   );
 }
 
-export default fy;
+export default Fy;

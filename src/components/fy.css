@@ -1,9 +1,13 @@
 .first-year-container {
     text-align: center;
     color: white; /* ✅ Ensures text is visible */
-    background-color: #121212; /* ✅ Dark Gray Background Instead of Black */
+    background-color: #000000; /* ✅ Dark Gray Background Instead of Black */
     min-height: 100vh; /* ✅ Ensures full-page height */
     padding: 50px;
+  }
+
+   h2{
+    font-size: 50px;
   }
   
   .question-list {
