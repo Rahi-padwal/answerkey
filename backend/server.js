@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const db = mysql.createConnection({
     host: 'localhost',    // Change if using a remote database
     user: 'root', // Replace with your MySQL username
-    password: 'Rahi@123', // Replace with your MySQL password
+    password: '', // Replace with your MySQL password
     database: 'userDB'
 });
 
@@ -40,6 +40,7 @@ app.post('/register', (req, res) => {
 });
 
 const PORT = 5000;
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+app.listen(PORT, '127.0.0.1', () => {
+    console.log(`Server running at http://127.0.0.1:${PORT}`);
 });
+
