@@ -1,9 +1,13 @@
 const mysql = require('mysql2');
+const express = require('express');
+const cors = require('cors');
+
+const app = express();
 
 const db = mysql.createConnection({
-    host: 'localhost',    // Change if using a remote database
-    user: 'root', // Replace with your MySQL username
-    password: '', // Replace with your MySQL password
+    host: 'localhost',
+    user: 'root',
+    password: '',
     database: 'userDB'
 });
 
@@ -15,12 +19,8 @@ db.connect((err) => {
     console.log('Connected to MySQL database');
 });
 
-const express = require('express');
-const app = express();
-const cors = require('cors');
-
 app.use(cors());
-app.use(express.json()); // Middleware to parse JSON requests
+app.use(express.json());
 
 app.post('/register', (req, res) => {
     const { name, email } = req.body;
@@ -39,8 +39,17 @@ app.post('/register', (req, res) => {
     });
 });
 
+app.get('/users', (req, res) => {
+    db.query('SELECT * FROM users', (err, results) => {
+        if (err) {
+            console.error('Error fetching users:', err);
+            return res.status(500).json({ message: 'Database error' });
+        }
+        res.json(results);
+    });
+});
+
 const PORT = 5000;
 app.listen(PORT, '127.0.0.1', () => {
     console.log(`Server running at http://127.0.0.1:${PORT}`);
 });
-

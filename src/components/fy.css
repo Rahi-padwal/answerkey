@@ -1,31 +1,56 @@
 .first-year-container {
-    text-align: center;
-    color: white; /* ✅ Ensures text is visible */
-    background-color: #000000; /* ✅ Dark Gray Background Instead of Black */
-    min-height: 100vh; /* ✅ Ensures full-page height */
-    padding: 50px;
-  }
+  text-align: center;
+  color: white;
+  background-color: #000;
+  min-height: 100vh;
+  padding: 50px 20px;
+  box-sizing: border-box;
+}
 
-   h2{
-    font-size: 50px;
+h2 {
+  font-size: 50px;
+  margin-bottom: 100px;
+  padding-bottom: 70px;
+}
+
+
+.paper-card {
+  background-color: #d3d3d3;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.paper-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 30px rgb(18, 168, 156);
+  border-color: rgba(255, 255, 255, 0.079);
+}
+
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto auto;
+    justify-content: start; /* Reset justify-content for stacking */
   }
-  
-  .question-list {
-    list-style-type: none;
-    padding: 0;
+  .grid-container > a:nth-child(n) {
+    grid-column: span 1; /* Each item takes one column */
   }
-  
-  .question-list li {
-    margin: 10px 0;
-  }
-  
-  .question-list a {
-    color: lightblue;
-    text-decoration: none;
-    font-size: 1.2rem;
-  }
-  
-  .question-list a:hover {
-    text-decoration: underline;
-  }
-  
+}
