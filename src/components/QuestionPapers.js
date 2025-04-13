@@ -1,29 +1,53 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import "./QuestionPapers.css";
 
+const subjects = [
+  { name: "LAUC", year: "First Year" },
+  { name: "PHYSICS", year: "First Year" },
+  { name: "MVC", year: "First Year" },
+  { name: "CHEMISTRY", year: "First Year" },
+  { name: "BEEE", year: "First Year" },
+  { name: "MATHS", year: "Second Year" },
+  { name: "ELECTRONICS", year: "Second Year" },
+  { name: "NETWORKS", year: "Second Year" },
+  { name: "DIGITAL", year: "Second Year" },
+  { name: "AI", year: "Second Year" },
+];
+
+const tabs = ["All", "First Year", "Second Year"];
+
 function QuestionPapers() {
-  const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("All");
+
+  const filteredSubjects =
+    activeTab === "All"
+      ? subjects
+      : subjects.filter((subject) => subject.year === activeTab);
 
   return (
     <section className="question-papers-section">
-      {/* ✅ Added Heading */}
-      <h2 className="qp-heading">PREVIOUS YEAR QUESTION PAPERS</h2>
+      <h2 className="qp-title">Last Year Question Paper</h2>
 
-      <div className="qp-cards-container">
-        <div className="qp-card" onClick={() => navigate("/first-year")}>
-          <div className="qp-content">
-            <h3>First Year</h3>
-            <p>Mention the subjects of first year</p>
-          </div>
-        </div>
+      {/* Filter Tabs */}
+      <div className="tab-container">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            className={`tab-btn ${activeTab === tab ? "active" : ""}`}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
 
-        <div className="qp-card" onClick={() => navigate("/second-year")}>
-          <div className="qp-content">
-            <h3>Second Year</h3>
-            <p>Mention the subjects of second year.</p>
+      {/* Subject Grid */}
+      <div className="qp-grid">
+        {filteredSubjects.map((subject, index) => (
+          <div key={index} className="qp-card">
+            <p className="qp-subject-name">{subject.name}</p>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
