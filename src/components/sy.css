@@ -1,68 +1,56 @@
-/*for the heading*/
-.second-year-container {
-    padding: 20px;
-    text-align: center;
-    
-  }
-  
-  .second-year-container h2 {
-    margin-bottom: 30px;
-    color: cyan; /* Added color to match your image */
-    padding-bottom: 50px;
-    margin-top: 40px;
-  }
-  
-  .department-row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    margin-bottom: 100px; /* Space between the rows */
-  }
-  
-  .department-box {
-    width: 300px;
-    height: 90px;
-    background-color: #1c1c1c;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    border: 1px solid white;
-    font-size: 40px;
-  }
-  
-  .department-box:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 20px rgb(18, 168, 156);
-    border-color: rgba(255, 255, 255, 0.3);
-  }
-
-.dropdown {
-  position: absolute;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px;
-  z-index: 1001; /* Ensure it's above other elements */
-  min-width: 150px;
+.first-year-container {
+  text-align: center;
+  color: white;
+  background-color: #000;
+  min-height: 100vh;
+  padding: 50px 20px;
+  box-sizing: border-box;
 }
 
-.dropdown a {
-  display: block;
-  padding: 4px 8px;
+h2 {
+  font-size: 50px;
+  margin-bottom: 100px;
+  padding-bottom: 70px;
+}
+
+
+.paper-card {
+  background-color: #d3d3d3;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
   text-decoration: none;
-  color: #333;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.dropdown a:hover {
-  background-color: #f0f0f0;
+.paper-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 30px rgb(18, 168, 156);
+  border-color: rgba(255, 255, 255, 0.079);
 }
 
-.department-box {
-  position: relative; /* Needed for dropdown positioning */
-  /* ... (your existing department-box styles) ... */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto auto auto;
+    justify-content: start; /* Reset justify-content for stacking */
+  }
+  .grid-container > a:nth-child(n) {
+    grid-column: span 1; /* Each item takes one column */
+  }
 }
