@@ -3,16 +3,16 @@
   min-height: 100vh;
   padding: 60px 30px;
   color: white;
-  display: flex; /* Enable flexbox for overall alignment */
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center content horizontally */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .qp-title {
   font-size: 2.8rem;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 1px;
   color: white;
 }
 
@@ -45,23 +45,28 @@
   color: black;
 }
 
-/* Grid layout */
-.qp-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px; /* Adjusted gap for better spacing */
-  width: 100%; /* Make grid take full width of its container */
-  max-width: 960px; /* Optional: Limit maximum width of the grid */
-  margin-bottom: 40px; /* Consistent margin below each grid */
-  justify-content: center; /* Center the grid items horizontally */
+/* Grid layout for BSH subjects */
+.bsh-grid {
+  display: flex; /* Use flexbox for a single row */
+  gap: 30px;
+  margin-bottom: 40px;
+  justify-content: center; /* Center the cards horizontally */
+}
+
+/* Grid layout for Second Year subjects */
+.second-year-grid {
+  display: flex; /* Use flexbox for a single row */
+  gap: 30px;
+  margin-bottom: 40px;
+  justify-content: center; /* Center the cards horizontally */
+  flex-wrap: wrap; /* Allow cards to wrap to the next line if needed */
 }
 
 /* Individual subject card */
 .qp-card {
   background-color: #111;
   border-radius: 16px;
-  padding: 40px 20px;
-  width: 180px;
+  width: 200px;
   height: 160px;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
@@ -81,13 +86,5 @@
   font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 1px;
-  line-height: 1.4; /* Improve readability for multi-line text */
-}
-
-.year-heading {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 40px 0 20px 0; /* Adjusted margins for better centering */
-  color: #00fff7;
-  text-align: center; /* Center the year heading */
+  line-height: 1.4;
 }
