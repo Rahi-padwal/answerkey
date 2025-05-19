@@ -10,7 +10,7 @@ const LoginModal = ({ isOpen, onLogin }) => {
     const handleSubmit = async (e) => { // Make handleSubmit async
         e.preventDefault();
         if (!email.endsWith("@cumminscollege.in")) {
-            alert("Only @cumminscollege.in emails are allowed.");
+            alert("Only Cummins college students are allowed to access this website.");
             return;
         }
 

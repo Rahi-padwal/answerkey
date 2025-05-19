@@ -11,11 +11,19 @@ function AboutMe() {
           <h1>Rahi Padwal</h1>
           <h2>Web Developer</h2>
           <p>
-          Hi there! I'm Rahi, a web developer passionate about crafting clean and dynamic websites. 
-          I specialize in front-end and back-end development, focusing on problem-solving and creating user-friendly solutions. 
-          <br/>Let’s connect and build something amazing! 
+          Hi, I'm Rahi Padwal — a second-year Electronics and Telecommunication Engineering student.<br/>
+          I'm a web developer who loves crafting user-friendly frontend interfaces & building backend systems. 
+          Through internships, freelance work, and college projects, I've contributed to a range of projects.
+          I'm always excited to create something that truly helps someone.<br/><br/>
+          Outside of tech, I'm deeply passionate about animal welfare and love playing basketball. 
+          If you have suggestions for this website or just want to appreciate my work, feel free to share your thoughts in the email.
+           I'd love to hear from you!
           </p>
-          <div className="icons">
+        </div>
+        <div className="image">
+          <img src={myPhoto} alt="Rahi Padwal" />
+          {/* Moved icons here */}
+          <div className="icons-below-photo">
             <a
               href="https://www.linkedin.com/in/rahipadwal/"
               target="_blank"
@@ -30,17 +38,14 @@ function AboutMe() {
             >
               <i className="fab fa-github"></i>
             </a>
-            <a
-              href="/path-to-resume.pdf"
+             <a
+              href="mailto:rahi.padwal@cumminscollege.in"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="fas fa-download"></i>
+              <i className="fas fa-envelope"></i>
             </a>
           </div>
-        </div>
-        <div className="image">
-          <img src={myPhoto} alt="Rahi Padwal" />
         </div>
       </div>
     </div>
