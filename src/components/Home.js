@@ -1,9 +1,15 @@
 import React from "react";
 import "./Home.css";
-import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const navigate = useNavigate();
+
+  const handleButtonClick = (e, targetId) => {
+    e.preventDefault();
+    const section = document.getElementById(targetId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="home-container">
@@ -12,10 +18,16 @@ function Home() {
 
       {/* New Buttons */}
       <div className="home-buttons">
-        <button className="custom-btn" onClick={() => navigate("/question-papers")}>
+        <button 
+          className="custom-btn" 
+          onClick={(e) => handleButtonClick(e, "question-papers")}
+        >
           View All Question Papers
         </button>
-        <button className="custom-btn" onClick={() => navigate("/about-me")}>
+        <button 
+          className="custom-btn" 
+          onClick={(e) => handleButtonClick(e, "about-me")}
+        >
           About Developer
         </button>
       </div>

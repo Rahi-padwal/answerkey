@@ -12,6 +12,7 @@ import InformationTechnology from "./components/InformationTechnology";
 import ElectronicsTelecommunication from "./components/ElectronicsTelecommunication";
 import Instrumentation from "./components/Instrumentation";
 import Mechanical from "./components/Mechanical";
+import SyllabusSection from "./components/SyllabusSection";
 import "./App.css";
 
 function App() {
@@ -42,12 +43,16 @@ function App() {
         const section = document.getElementById(targetId);
         if (location.pathname === "/" && section) {
             section.scrollIntoView({ behavior: "smooth" });
-        } else if (targetId === "home") {
-            navigate("/"); // Navigate to homepage if not already there
-        } else if (targetId === "question-papers") {
-            navigate("/question-papers");
-        } else if (targetId === "about-me") {
-            navigate("/about-me");
+        } else {
+            // If not on home page, navigate to home and then scroll
+            navigate("/");
+            // Use setTimeout to ensure the navigation completes before scrolling
+            setTimeout(() => {
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: "smooth" });
+                }
+            }, 100);
         }
     };
 
@@ -70,6 +75,7 @@ function App() {
                             <ul>
                                 <li><Link to="/" onClick={(e) => smoothScroll(e, "home")}>Home</Link></li>
                                 <li><Link to="/question-papers" onClick={(e) => smoothScroll(e, "question-papers")}>Question Papers</Link></li>
+                                <li><Link to="/syllabus" onClick={(e) => smoothScroll(e, "syllabus")}>Syllabus</Link></li>
                                 <li><Link to="/about-me" onClick={(e) => smoothScroll(e, "about-me")}>About Me</Link></li>
                             </ul>
                         </div>
@@ -83,6 +89,9 @@ function App() {
                             </section>
                             <section id="question-papers">
                                 <QuestionPapers />
+                            </section>
+                            <section id="syllabus">
+                                <SyllabusSection />
                             </section>
                             <section id="about-me">
                                 <AboutMe />

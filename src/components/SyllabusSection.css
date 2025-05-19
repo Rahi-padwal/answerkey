@@ -1,0 +1,134 @@
+.syllabus-section {
+  background-color: black;
+  min-height: 100vh;
+  padding: 2rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.syllabus-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #fff;
+}
+
+.syllabus-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.branch-row {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.branch-row:last-child {
+  margin-left: 165px;
+}
+
+.branch-card {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  width: 300px;
+  height: 150px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.branch-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
+  background-color: #2a2a2a;
+}
+
+.branch-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .branch-card {
+    width: 350px;
+    height: 180px;
+  }
+  
+  .branch-row:last-child {
+    margin-left: 140px;
+  }
+  
+  .branch-name {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .branch-card {
+    width: 280px;
+    height: 140px;
+  }
+  
+  .branch-name {
+    font-size: 1.3rem;
+  }
+  
+  .branch-row {
+    gap: 20px;
+  }
+  
+  .branch-row:last-child {
+    margin-left: 110px;
+  }
+}
+
+@media (max-width: 640px) {
+  .syllabus-grid {
+    gap: 20px;
+  }
+  
+  .branch-card {
+    width: 150px;
+    height: 100px;
+  }
+  
+  .branch-name {
+    font-size: 1rem;
+  }
+  
+  .branch-row {
+    gap: 15px;
+  }
+  
+  .branch-row:last-child {
+    margin-left: 82.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .branch-card {
+    width: 260px;
+    height: 130px;
+  }
+  
+  .branch-name {
+    font-size: 1.2rem;
+  }
+} 

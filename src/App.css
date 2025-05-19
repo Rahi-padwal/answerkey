@@ -100,12 +100,18 @@ section {
   background-color: black !important;
   color: white;
   text-align: center;
+  scroll-margin-top: 80px; /* Add space equal to navbar height */
+}
+
+#syllabus {
+  scroll-margin-top: 80px; /* Add space equal to navbar height */
 }
 
 #about-me {
   background-color: white;
   color: black;
   text-align: center;
+  scroll-margin-top: 80px; /* Add space equal to navbar height */
 }
 
 h2, p {
