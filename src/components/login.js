@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./login.css";
 
 const LoginModal = ({ isOpen, onLogin }) => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
 
+    // Load saved values on component mount
+    useEffect(() => {
+        const savedName = localStorage.getItem("name");
+        const savedEmail = localStorage.getItem("email");
+        if (savedName) setName(savedName);
+        if (savedEmail) setEmail(savedEmail);
+    }, []);
+
     if (!isOpen) return null;
 
-    const handleSubmit = async (e) => { // Make handleSubmit async
+    const handleSubmit = async (e) => {
         e.preventDefault();
         if (!email.endsWith("@cumminscollege.in")) {
             alert("Only Cummins college students are allowed to access this website.");
@@ -20,14 +28,18 @@ const LoginModal = ({ isOpen, onLogin }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ name, email }), // Send name and email in the request body
+                body: JSON.stringify({ name, email }),
             });
 
             if (response.ok) {
                 const data = await response.json();
                 console.log('Registration successful:', data);
-                onLogin(); // Call the login function in App.js upon successful registration
-                // Optionally, you can reset the form here:
+
+                // Save to localStorage
+                localStorage.setItem("name", name);
+                localStorage.setItem("email", email);
+
+                onLogin(); // Notify parent
                 setName("");
                 setEmail("");
             } else {
@@ -53,7 +65,7 @@ const LoginModal = ({ isOpen, onLogin }) => {
                 <form onSubmit={handleSubmit}>
                     <p>Name: <input type="text" value={name} onChange={(e) => setName(e.target.value)} required /></p>
                     <p>Email: <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></p>
-                    <button type="submit" className="login-submit">Register</button> {/* Change button text to "Register" */}
+                    <button type="submit" className="login-submit">Register</button>
                 </form>
             </div>
         </div>

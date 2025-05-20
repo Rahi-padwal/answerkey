@@ -9,10 +9,10 @@ const getPdfFileName = (branchName, semesterSlug) => {
   if ((branchName === "Computer Engineering" || branchName === "Information Technology") && semesterSlug === "sem2") {
     return "CS-IT-SEM2.pdf";
   }
-  if ((branchName === "ENTC" || branchName === "Instrumentation" || branchName === "Mechanical") && semesterSlug === "sem1") {
+  if ((branchName === "Electronics & Telecommunication" || branchName === "Instrumentation" || branchName === "Mechanical") && semesterSlug === "sem1") {
     return "ETC-IN-MECH-SEM1.pdf";
   }
-    if ((branchName === "ENTC" || branchName === "Instrumentation" || branchName === "Mechanical") && semesterSlug === "sem2") {
+    if ((branchName === "Electronics & Telecommunication" || branchName === "Instrumentation" || branchName === "Mechanical") && semesterSlug === "sem2") {
     return "ETC-IN-MECH-SEM2.pdf";
   }
 
@@ -20,7 +20,7 @@ const getPdfFileName = (branchName, semesterSlug) => {
   const branchSlugs = {
     "Computer Engineering": "CS", // Use CS slug for single files
     "Information Technology": "IT",
-    "ENTC": "ENTC",
+    "Electronics & Telecommunication": "Electronics & Telecommunication",
     "Mechanical": "MECH",
     "Instrumentation": "INSTRU",
   };
@@ -30,6 +30,14 @@ const getPdfFileName = (branchName, semesterSlug) => {
   // Handle cases like MECH-SSEM4.pdf vs MECH-SEM3.pdf
    if (branchName === "Mechanical" && semesterSlug === "sem4") {
      return `MECH-SSEM4.pdf`;
+   }
+
+   if (branchName === "Electronics & Telecommunication" && semesterSlug === "sem3") {
+     return `ENTC-SEM3.pdf`;
+   }
+
+   if (branchName === "Electronics & Telecommunication" && semesterSlug === "sem4") {
+     return `ENTC-SEM4.pdf`;
    }
 
   return `${branchSlug}-${semesterSlug}.pdf`;

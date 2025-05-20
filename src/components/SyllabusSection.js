@@ -6,7 +6,7 @@ const SyllabusSection = () => {
   const branches = [
     "Computer Engineering",
     "Information Technology",
-    "ENTC",
+    "Electronics & Telecommunication",
     "Mechanical",
     "Instrumentation"
   ];
