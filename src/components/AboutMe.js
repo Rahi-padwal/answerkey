@@ -32,7 +32,7 @@ function AboutMe() {
               <i className="fab fa-linkedin"></i>
             </a>
             <a
-              href="https://github.com/rahi30-prog"
+              href="https://github.com/Rahi-padwal"
               target="_blank"
               rel="noopener noreferrer"
             >

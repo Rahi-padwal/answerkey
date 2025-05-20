@@ -43,6 +43,9 @@ const LoginModal = ({ isOpen, onLogin }) => {
 
     return (
         <div className="login-modal">
+            <div className="welcome-message">
+                Welcome to Answer Key Portal
+            </div>
             <div className="login-box">
                 <h2>Log in</h2> {/* Consider changing this to "Register" if you are storing new users */}
                 <form onSubmit={handleSubmit}>
