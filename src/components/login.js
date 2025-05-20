@@ -43,11 +43,13 @@ const LoginModal = ({ isOpen, onLogin }) => {
 
     return (
         <div className="login-modal">
-            <div className="welcome-message">
-                Welcome to Answer Key Portal
-            </div>
             <div className="login-box">
-                <h2>Log in</h2> {/* Consider changing this to "Register" if you are storing new users */}
+                <div className="login-header">
+                    <h2>Log in</h2>
+                    <div className="welcome-message">
+                        (As this website contains some official documents, only Cummins college students are allowed to access this website.)
+                    </div>
+                </div>
                 <form onSubmit={handleSubmit}>
                     <p>Name: <input type="text" value={name} onChange={(e) => setName(e.target.value)} required /></p>
                     <p>Email: <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required /></p>

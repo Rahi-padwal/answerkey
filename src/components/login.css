@@ -10,37 +10,55 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1000;
-  }
-  
-  /* Modal Box */
-  .login-box {
-    background: linear-gradient(to right,#082c2a, #23716b);
+}
+
+/* Modal Box */
+.login-box {
+    background: linear-gradient(to right,#024945, #12a89c);
     padding: 20px;
     border-radius: 10px;
     text-align: center;
     width: 300px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Close Button */
-  .close-btn {
+}
+
+.login-header {
+    margin-bottom: 20px;
+}
+
+.login-header h2 {
+  color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+.welcome-message {
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0;
+    text-align: center;
+}
+
+/* Close Button */
+.close-btn {
     cursor: pointer;
     float: right;
     font-size: 20px;
     font-weight: bold;
-  }
-  
-  /* Form Inputs */
-  input {
+}
+
+/* Form Inputs */
+input {
     width: 90%;
     padding: 8px;
     margin: 8px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-  }
-  
-  /* Login Button */
-  .login-submit {
+}
+
+/* Login Button */
+.login-submit {
     background: #000000;
     color: rgb(255, 248, 248);
     font-size: 15px;
@@ -51,25 +69,26 @@
     margin-top: 10px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .login-submit:hover {
-    background: #0056b3;
-  }
+}
 
-  form {
+.login-submit:hover {
+    background: #0056b3;
+}
+
+form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
+}
 
-  p {
+p {
+    color: #000000;
     margin: 0;
     font-size: 1rem;
-    font-weight: bold;
+    font-weight:bolder;
     text-align: left;
-  }
-  
-  p input {
+}
+
+p input {
     margin-top: 3px;
-  }
+}
