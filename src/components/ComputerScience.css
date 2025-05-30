@@ -17,22 +17,16 @@
 }
 
 .cs-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 30px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    align-items: center;
+    padding: 0 20px;
 }
 
-.subject-row {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-}
-
-.comp-card {
+.cs-card {
     background-color: #111;
     border-radius: 16px;
     width: 250px;
@@ -47,13 +41,13 @@
     padding: 15px;
 }
 
-.comp-card:hover {
+.cs-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 255, 255, 0.2);
     background-color: #1a1a1a;
 }
 
-.comp-card-link {
+.cs-card-link {
     text-decoration: none;
     color: inherit;
     display: flex;
@@ -63,9 +57,10 @@
     justify-content: center;
 }
 
-.comp-subject-name {
-    font-size: 2rem;
-    font-weight: bold;
+.cs-subject-name {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 400;
     letter-spacing: 1px;
     line-height: 1.4;
     margin: 0;
@@ -75,38 +70,34 @@
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-    .comp-card {
+    .cs-card {
         width: 350px;
         height: 180px;
     }
     
-    .comp-subject-name {
+    .cs-subject-name {
         font-size: 1.8rem;
     }
 }
 
 @media (max-width: 768px) {
-    .comp-card {
+    .cs-card {
         width: 300px;
         height: 160px;
     }
     
-    .comp-subject-name {
+    .cs-subject-name {
         font-size: 1.5rem;
-    }
-    
-    .subject-row {
-        gap: 20px;
     }
 }
 
 @media (max-width: 480px) {
-    .comp-card {
+    .cs-card {
         width: 280px;
         height: 140px;
     }
     
-    .comp-subject-name {
+    .cs-subject-name {
         font-size: 1.3rem;
     }
     

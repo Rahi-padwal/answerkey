@@ -3,22 +3,22 @@ import "./Mechanical.css";
 
 const subjects = [
     { 
-        name: "ASM", 
+        name: "Analysis & Systhesis of Mechanisms", 
         path: "asm",
         driveLink: "https://drive.google.com/drive/folders/1TZbIH8RA1m7gwJ1f8zsUejL31e9GnZHp?usp=sharing"
     },
     { 
-        name: "CF", 
+        name: "Casting Forming", 
         path: "cf",
         driveLink: "https://drive.google.com/drive/folders/1wcy7s9H1uUttGmChnApSwWwVLC3lLAeR?usp=sharing"
     },
     { 
-        name: "Fluid Mech", 
+        name: "Fluid Mechanics", 
         path: "fluid-mech",
         driveLink: "https://drive.google.com/drive/folders/195c8u7z9j7uoIbrCcbXQEJ6JEgQjQ68T?usp=sharing"
     },
     { 
-        name: "MD", 
+        name: "Machine Design", 
         path: "md",
         driveLink: "https://drive.google.com/drive/folders/1_B-nHlDTyYJ1wxV1yr9AN_JJNayOA6hg?usp=sharing"
     },

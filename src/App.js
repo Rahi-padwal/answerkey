@@ -23,12 +23,14 @@ function App() {
     const location = useLocation();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setShowWebsite(false);
+        const handleShowLoginModal = () => {
             setLoginOpen(true);
-        }, 5000);
+        };
 
-        return () => clearTimeout(timer);
+        window.addEventListener('showLoginModal', handleShowLoginModal);
+        return () => {
+            window.removeEventListener('showLoginModal', handleShowLoginModal);
+        };
     }, []);
 
     const handleLogin = () => {
@@ -114,6 +116,7 @@ function App() {
                         <Route path="/subject/entc" element={<ElectronicsTelecommunication />} />
                         <Route path="/subject/instru" element={<Instrumentation />} />
                         <Route path="/subject/mech" element={<Mechanical />} />
+                        <Route path="/subject/first-year" element={<FirstYear />} />
                         <Route path="*" element={<h2 style={{ color: "white", textAlign: "center" }}>404 - Page Not Found</h2>} />
                     </Routes>
                 </>

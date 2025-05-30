@@ -1,7 +1,7 @@
 .first-year-container {
+  background-color: #1a1a1a;
   text-align: center;
   color: white;
-  background-color: #000;
   min-height: 100vh;
   padding: 50px 20px;
   box-sizing: border-box;
@@ -15,7 +15,6 @@ h2 {
 
 
 .paper-card {
-  background-color: #d3d3d3;
   width: 150px;
   height: 150px;
   display: flex;
@@ -46,6 +45,7 @@ h2 {
 
 @media (max-width: 768px) {
   .grid-container {
+    background-color: #1a1a1a;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto auto auto auto;
     justify-content: start; /* Reset justify-content for stacking */
