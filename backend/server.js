@@ -13,7 +13,8 @@ const db = mysql.createConnection({
     host: process.env.DB_HOST,         // e.g., 'roundhouse.proxy.rlwy.dev' from Railway
     user: process.env.DB_USER,         // e.g., 'root' or 'railway'
     password: process.env.DB_PASSWORD, // e.g., 'your_db_password_from_platform'
-    database: process.env.DB_NAME,     // e.g., 'railway' or 'userDB'
+    database: process.env.DB_NAME, 
+    port: process.env.DB_PORT,    
     waitForConnections: true,          // Recommended for production
     connectionLimit: 10,               // Recommended for production
     queueLimit: 0                      // Recommended for production
