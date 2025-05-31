@@ -1,33 +1,12 @@
-const mysql = require('mysql2');
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // Added for serving static files
+const path = require('path');
+const { db } = require('./firebase-config');
+const admin = require('firebase-admin');
 
 const app = express();
 // Use process.env.PORT provided by the hosting platform, or default to 5000 for local development
 const PORT = process.env.PORT || 5000;
-
-// MySQL connection setup - CRITICAL: Use environment variables for deployment!
-const db = mysql.createConnection({
-    host: process.env.DB_HOST,         // e.g., 'roundhouse.proxy.rlwy.dev' from Railway
-    user: process.env.DB_USER,         // e.g., 'root' or 'railway'
-    password: process.env.DB_PASSWORD, // e.g., 'your_db_password_from_platform'
-    database: process.env.DB_NAME, 
-    port: process.env.DB_PORT,    
-    waitForConnections: true,          // Recommended for production
-    connectionLimit: 10,               // Recommended for production
-    queueLimit: 0                      // Recommended for production
-});
-
-db.connect((err) => {
-    if (err) {
-        console.error('Database connection failed:', err.stack); // Use .stack for detailed error
-        // In a deployed environment, if the database fails, it's often better to exit
-        // process.exit(1); // Uncomment if you want to exit the app on DB connection failure
-        return;
-    }
-    console.log('Connected to MySQL database as id ' + db.threadId);
-});
 
 // Middleware
 // Configure CORS to allow requests only from your frontend's domain (more secure)
@@ -53,73 +32,61 @@ app.use(cors({
 
 app.use(express.json()); // For parsing application/json bodies from frontend
 
-// --- Authentication (Passport.js) - Placeholder for your setup ---
-// (You mentioned Passport.js in package.json, so this is where its setup would go.
-//  This specific snippet does NOT include the actual Passport logic, just a reminder.)
-// const session = require('express-session');
-// const passport = require('passport');
-// const GoogleStrategy = require('passport-google-oauth20').Strategy; // If using Google Auth
-
-// app.use(session({
-//     secret: process.env.SESSION_SECRET || 'a_strong_secret_for_local_dev', // Use env var for secret!
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: { secure: process.env.NODE_ENV === 'production', httpOnly: true, maxAge: 24 * 60 * 60 * 1000 } // Secure in production (HTTPS)
-// }));
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// // Passport strategies and serialize/deserialize user functions would go here
-// // Example Google OAuth routes:
-// // app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
-// // app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), (req, res) => {
-// //     res.redirect('/dashboard'); // Redirect after successful login
-// // });
-// // Example check for authenticated user
-// // app.get('/api/current_user', (req, res) => {
-// //     res.send(req.user);
-// // });
-// // ------------------------------------------------------------------
-
-
 // POST: Register user
-// Assumes 'email' column in 'users' table has a UNIQUE constraint
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
     const { name, email } = req.body;
 
     if (!name || !email) {
         return res.status(400).json({ message: 'Name and email are required' });
     }
 
-    const insertSql = 'INSERT INTO users (name, email) VALUES (?, ?)';
-    db.query(insertSql, [name, email], (err, result) => {
-        if (err) {
-            // Check specifically for duplicate entry error (ER_DUP_ENTRY)
-            if (err.code === 'ER_DUP_ENTRY') {
-                console.warn(`Attempted duplicate registration for email: ${email}`);
-                return res.status(409).json({ message: 'This email is already registered.' });
-            }
-            console.error('Error inserting data:', err);
-            return res.status(500).json({ message: 'Database error occurred during registration.' });
+    try {
+        // Check if user already exists
+        const usersRef = db.collection('users');
+        const snapshot = await usersRef.where('email', '==', email).get();
+        
+        if (!snapshot.empty) {
+            console.warn(`Attempted duplicate registration for email: ${email}`);
+            return res.status(409).json({ message: 'This email is already registered.' });
         }
+
+        // Add new user
+        const docRef = await usersRef.add({
+            name,
+            email,
+            createdAt: admin.firestore.FieldValue.serverTimestamp()
+        });
+
         res.status(201).json({
             message: 'User registered successfully',
-            userId: result.insertId
+            userId: docRef.id
         });
-    });
+    } catch (error) {
+        console.error('Error registering user:', error);
+        res.status(500).json({ message: 'Database error occurred during registration.' });
+    }
 });
 
 // GET: Retrieve all users
-app.get('/users', (req, res) => {
-    db.query('SELECT * FROM users', (err, results) => {
-        if (err) {
-            console.error('Error fetching users:', err);
-            return res.status(500).json({ message: 'Database error occurred while fetching users.' });
-        }
-        res.json(results);
-    });
-});
+app.get('/users', async (req, res) => {
+    try {
+        const usersRef = db.collection('users');
+        const snapshot = await usersRef.get();
+        
+        const users = [];
+        snapshot.forEach(doc => {
+            users.push({
+                id: doc.id,
+                ...doc.data()
+            });
+        });
 
+        res.json(users);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ message: 'Database error occurred while fetching users.' });
+    }
+});
 
 // --- Serve React Frontend Static Files in Production ---
 // This block ensures your Node.js server also serves your React app when deployed.
@@ -134,7 +101,6 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-
 
 // Start server
 // Listen on the dynamic PORT and on '0.0.0.0' to be accessible from outside the container
