@@ -2,7 +2,6 @@ const mysql = require('mysql2');
 const express = require('express');
 const cors = require('cors');
 const path = require('path'); // Added for serving static files
-require('dotenv').config(); // This line loads environment variables from a .env file locally
 
 const app = express();
 // Use process.env.PORT provided by the hosting platform, or default to 5000 for local development
