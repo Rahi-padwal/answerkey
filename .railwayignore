@@ -1,6 +1,3 @@
-# .railwayignore
-# Files and directories to ignore when building on Railway
-
 .git/
 .env
 node_modules/
