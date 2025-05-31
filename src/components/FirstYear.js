@@ -18,7 +18,7 @@ function FirstYear() {
         setTimeout(() => {
             const event = new CustomEvent('showLoginModal');
             window.dispatchEvent(event);
-        }, 2000);
+        }, 500);
     };
 
     return (
