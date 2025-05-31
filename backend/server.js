@@ -1,7 +1,8 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const admin = require('firebase-admin');
+
+require('dotenv').config();
 
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 
@@ -15,13 +16,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
-    'http://localhost:3000',
-    // Add your deployed frontend URLs here
+    'http://localhost:3000',  // local dev frontend
+    'https://answerkey-1.onrender.com',  // your deployed frontend static site URL
 ];
 
 app.use(cors({
     origin: function (origin, callback) {
-        if (!origin) return callback(null, true);
+        if (!origin) return callback(null, true);  // allow non-browser clients (like Postman)
         if (allowedOrigins.indexOf(origin) === -1) {
             const msg = `The CORS policy for this site does not allow access from the specified Origin: ${origin}`;
             return callback(new Error(msg), false);
@@ -33,6 +34,7 @@ app.use(cors({
 
 app.use(express.json());
 
+// POST /register
 app.post('/register', async (req, res) => {
     const { name, email } = req.body;
 
@@ -65,6 +67,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
+// GET /users
 app.get('/users', async (req, res) => {
     try {
         const usersRef = db.collection('users');
@@ -85,14 +88,8 @@ app.get('/users', async (req, res) => {
     }
 });
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
+// Remove static file serving because frontend is deployed separately
 
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`For local access, use: http://localhost:${PORT}`);
 });
