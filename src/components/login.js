@@ -23,16 +23,24 @@ const LoginModal = ({ isOpen, onLogin }) => {
         }
 
         try {
-            const response = await fetch('https://answerkey.onrender.com/api/some-endpoint', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email }),
-            });
+            const response = await fetch('https://answerkey.onrender.com/register', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, email }),
+});
+
+let data;
+const contentType = response.headers.get('content-type');
+if (contentType && contentType.includes('application/json')) {
+    data = await response.json();
+} else {
+    throw new Error('Non-JSON response received from server');
+}
+
 
             if (response.ok) {
-                const data = await response.json();
                 console.log('Registration successful:', data);
 
                 // Save to localStorage
@@ -43,9 +51,8 @@ const LoginModal = ({ isOpen, onLogin }) => {
                 setName("");
                 setEmail("");
             } else {
-                const errorData = await response.json();
-                console.error('Registration failed:', errorData);
-                alert(`Registration failed: ${errorData.message || 'Something went wrong'}`);
+                console.error('Registration failed:', data);
+                alert(`Registration failed: ${data.message || 'Something went wrong'}`);
             }
         } catch (error) {
             console.error('Error sending data to server:', error);
