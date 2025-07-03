@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+# Answer Key
+Answer Key is a secure web application built exclusively for the students of Cummins College. It provides easy access to:
+Previous year question papers
+Current syllabus
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+By restricting access to users with valid Cummins email addresses, the platform ensures that sensitive academic resources remain private and accessible only to the intended audience.  
 
-## Available Scripts
+  
+### 🌐 Live Site: https://answerkey-1.onrender.com/
 
-In the project directory, you can run:
+Why Answer Key?
+Navigating academic resources shouldn't be a struggle. Answer Key solves this by providing:
+Centralized access to verified academic documents
+Secure sign-in restricted to Cummins students
+Time-saving interface to quickly find relevant papers and syllabi
 
-### `npm start`
+Whether you're preparing for exams or planning your semester, Answer Key makes sure you always have the right materials at hand.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  
+### 🛠️ Getting Started
+Note: Access is limited to users with Cummins College email addresses.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To use the platform:
+Visit https://answerkey-1.onrender.com/
 
-### `npm test`
+Sign in using your official Cummins email.
+Browse and download academic documents with ease.
+No installation or setup needed — just log in and go.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 👩‍💻 Maintainer
+This project is actively maintained by:
+Rahi Padwal  
+LinkedIn: https://www.linkedin.com/in/rahipadwal/  
+Github: https://github.com/Rahi-padwal  
+Mail ID: padwalrahi@gmail.com  
